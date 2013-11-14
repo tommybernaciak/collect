@@ -1,4 +1,6 @@
 Collect::Application.routes.draw do
+  resources :posts
+
   resources :users
 
   get "welcome/index"

@@ -1,11 +1,11 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "ReCollect", '#', id: "logo" %>
+      <%= link_to "ReCollect", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li class="btn btn-small"><%= link_to "Home",    '#' %></li>
-          <li class="btn btn-small"><%= link_to "Help",    'welcome/help' %></li>
+          <li class="btn btn-small"><%= link_to "Home", root_path %></li>
+          <li class="btn btn-small"><%= link_to 'Help', help_path %></li>
           <li class="btn btn-small"><%= link_to "Sign in", '#' %></li>
         </ul>
       </nav>

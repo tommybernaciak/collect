@@ -7,9 +7,11 @@ Collect::Application.routes.draw do
 
   root 'welcome#index'
   #STATIC PAGES
-  match '/help',    to: 'welcome#help',    via: 'get'
-  match '/about',    to: 'welcome#about',    via: 'get'
-  match '/contact',    to: 'welcome#contact',    via: 'get'
+  match '/help',      to: 'welcome#help',     via: 'get'
+  match '/about',     to: 'welcome#about',    via: 'get'
+  match '/contact',   to: 'welcome#contact',  via: 'get'
+  #USER
+  match '/signup',    to: 'users#new',        via: 'get'
 
   
   # Example of regular route:

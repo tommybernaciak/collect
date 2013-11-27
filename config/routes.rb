@@ -1,6 +1,7 @@
 Collect::Application.routes.draw do
   resources :posts
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
 
   #get "welcome/index"
@@ -12,6 +13,8 @@ Collect::Application.routes.draw do
   match '/contact',   to: 'welcome#contact',  via: 'get'
   #USER
   match '/signup',    to: 'users#new',        via: 'get'
+  match '/signin',    to: 'sessions#new',     via: 'get'
+  match '/signout',   to: 'sessions#destroy', via: 'delete'
 
   
   # Example of regular route:

@@ -1,36 +1,39 @@
 <%= form_for(@user) do |f| %>
-  
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <div class="alert alert-error">
-        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-      </div>
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+  <div class="row">
+    <div class="span6 offset3">
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <div class="alert alert-error">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          </div>
+          <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+
+      <div class="field">
+        <%= f.label :nick %><br>
+        <%= f.text_field :nick %>
+      </div>
+      <div class="field">
+        <%= f.label :email %><br>
+        <%= f.text_field :email %>
+      </div>
+      <div class="field">
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation, "Confirmation" %><br>
+        <%= f.password_field :password_confirmation %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Create account", class: "btn btn-info btn-small" %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :nick %><br>
-    <%= f.text_field :nick %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirmation" %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Create account", class: "btn btn-info btn-small" %>
   </div>
 <% end %>

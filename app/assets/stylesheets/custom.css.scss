@@ -52,8 +52,8 @@ p {
 
 /* header */
 header {
-
 }
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -61,7 +61,7 @@ header {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 2px;
   font-weight: bold;
   line-height: 1;
   border: 5px solid #fff;
@@ -73,14 +73,21 @@ header {
 
 /* footer */
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #999;
+  position:absolute;
+  bottom:0;
+  height:30px;   /* Height of the footer */
+  background:#eee;
+  width: 100%;
+  padding-top: 10px;
+  border-top: 3px solid #eaeaea;
+  color: #333;
   a {
-    color: #555;
+    color: #333;
+    text-decoration:none;
     &:hover {
-      color: #222;
+      color: #000;
+      background-color: transparent;
+      text-decoration:underline;
     }
   }
   small {

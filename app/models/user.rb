@@ -27,15 +27,4 @@ class User < ActiveRecord::Base
       self.remember_token = User.encrypt(User.new_remember_token)
     end
 
-	#ROLES = %w{admin user}
-
-
-	#def is_admin?
-   	#	role == "admin"
-  	#end
-
-  	#def is_user?
-    #	role == "user"
-  	#end
-
 end

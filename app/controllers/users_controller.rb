@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
+    @posts = @user.posts.paginate(page: params[:page])
   end
 
   # GET /users/new
@@ -83,14 +85,6 @@ class UsersController < ApplicationController
     # Never trust parameters from the internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:nick, :email, :password, :password_confirmation, :admin)
-    end
-
-    #check if user is signed in or not
-    def signed_in_user
-      unless signed_in?
-        store_location
-        redirect_to signin_url, notice: "Please sign in."
-      end
     end
 
     #check if correct user is doing action

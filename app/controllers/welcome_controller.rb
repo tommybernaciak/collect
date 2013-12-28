@@ -1,7 +1,9 @@
 class WelcomeController < ApplicationController
+  
   def index
-  	@welcome_message = 'ReCollect - Application for records collectors (message from welcome controller)'
+    @posts = Post.all.paginate(page: params[:page])
   end
+
   # static pages
   def help
   end

@@ -1,4 +1,16 @@
 <% provide(:title, 'Home') %>
 
 <h1> HOME </h1>
-<p><%= @welcome_message %></p>
+<% unless signed_in? %>
+	<span>This is application for people who are collecting records, if you have big albums library, join us!</span>
+<% end %>
+
+<div class="span8">
+  <% if @posts.any? %>
+    <h3> Posts: </h3>
+    <ol class="posts">
+      <%= render @posts %>
+    </ol>
+    <%= will_paginate @posts %>
+  <% end %>
+</div>

@@ -4,8 +4,13 @@
       <%= link_to "ReCollect", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li class="btn btn-small"><%= link_to "Home", root_path %></li>
-          <li class="btn btn-small"><%= link_to 'Help', help_path %></li>
+          <div class="btn-group">
+            <li class="btn btn-small"><%= link_to "Home", root_path %></li>
+            <li class="btn btn-small"><%= link_to 'Help', help_path %></li>
+            <% unless signed_in? %>
+              <li class="btn btn-small btn-warning"><%= link_to "Sign in", signin_path %></li>
+            <% end %>
+          </div>
           <% if signed_in? %>
             <div class="btn-group">
               <a href="#" class="btn dropdown-toggle" data-toggle="dropdown">
@@ -23,8 +28,6 @@
                 <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
               </ul>
             </div>
-          <% else %>
-            <li class="btn btn-small"><%= link_to "Sign in", signin_path %></li>
           <% end %>
         </ul>
       </nav>

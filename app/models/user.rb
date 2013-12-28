@@ -1,12 +1,11 @@
 class User < ActiveRecord::Base
-	has_many :posts
+	has_many :posts, dependent: :destroy
 
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
 
 	has_secure_password
 	validates :password, length: { minimum: 6 }
-
 	validates_presence_of :email, :nick
 	validates :nick, length: { maximum: 30, minimum: 5 }
 	validates_uniqueness_of :nick, :email

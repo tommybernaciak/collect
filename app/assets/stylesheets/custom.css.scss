@@ -73,8 +73,8 @@ header {
 
 /* footer */
 footer {
-  position:absolute;
-  bottom:0;
+  //position:absolute;
+  //bottom:0;
   height:30px;   /* Height of the footer */
   background:#eee;
   width: 100%;
@@ -132,4 +132,10 @@ footer {
 }
 .timestamp {
   color: $grayLight;
+}
+
+/* not used right now */
+
+.module{
+  border: 1px solid #e8e8e8;
 }

@@ -1,9 +1,23 @@
 <% provide(:title, 'Home') %>
 
-<h1> HOME </h1>
+<h1> RECOLLECT </h1>
+
 <% unless signed_in? %>
-	<span>This is application for people who are collecting records, if you have big albums library, join us!</span>
+	<span>ReCollect is an application for music-heads and people who are collecting records, if you have a big albums library, join us!</span>
 <% end %>
+
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'posts/form' %>
+      </section>
+    </aside>
+  </div>
+ <% end %>
 
 <div class="span8">
   <% if @posts.any? %>

@@ -1,8 +1,15 @@
 Collect::Application.routes.draw do
+  
   resources :posts
-  resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
+  resources :relationships, only: [:create, :destroy]
 
   #get "welcome/index"
 

@@ -27,6 +27,7 @@ class PostsController < ApplicationController
       flash[:success] = "post created!"
       redirect_to root_url
     else
+      @feed_items = []
       render action: 'new'
     end
   end
@@ -47,10 +48,7 @@ class PostsController < ApplicationController
   # DELETE
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
-    end
+    redirect_to root_url
   end
 
   private

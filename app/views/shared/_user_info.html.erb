@@ -1,5 +1,6 @@
 <h1>
 	<%= current_user.nick %>
+	<%= image_tag current_user.profile_photo.url(:avatar) %>
 </h1>
 <span>
 	<%= link_to "view my profile", current_user %>

@@ -5,6 +5,8 @@
   <%= @user.nick %>
 </p>
 
+<%= image_tag @user.profile_photo.url(:avatar) %>
+
 <p>
   <strong>Email:</strong>
   <%= @user.email %>

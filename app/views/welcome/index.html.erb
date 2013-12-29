@@ -2,29 +2,29 @@
 
 <h1> RECOLLECT </h1>
 
-<% unless signed_in? %>
-	<span>ReCollect is an application for music-heads and people who are collecting records, if you have a big albums library, join us!</span>
-<% end %>
-
 <% if signed_in? %>
   <div class="row">
-    <aside class="span4">
       <section>
         <%= render 'shared/user_info' %>
       </section>
-      <section>
         <%= render 'posts/form' %>
-      </section>
-    </aside>
-  </div>
- <% end %>
 
-<div class="span8">
   <% if @posts.any? %>
-    <h3> Posts: </h3>
+    <h3> All Posts: </h3>
     <ol class="posts">
       <%= render @posts %>
     </ol>
     <%= will_paginate @posts %>
   <% end %>
-</div>
+  </div>
+
+  <div class="span8">
+      <h3>Following:</h3>
+      <%= render 'shared/feed' %>
+  </div>
+
+<%else %>
+
+  <span>ReCollect is an application for music-heads and people who are collecting records, if you have a big albums library, join us!</span>
+
+<% end %>

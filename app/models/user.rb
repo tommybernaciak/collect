@@ -21,23 +21,23 @@ class User < ActiveRecord::Base
 
 	# used for profile_photo
 	has_attached_file :profile_photo, :styles => {:avatar => "130x130>"},
-					:url  => "/assets/users/:id/:style/:basename.:extension",
-                 	:path => ":rails_root/public/assets/users/:id/:style/:basename.:extension"
+	:url  => "/assets/users/:id/:style/:basename.:extension",
+ 	:path => ":rails_root/public/assets/users/:id/:style/:basename.:extension"
 
 	validates_attachment_presence :profile_photo
 	validates_attachment_size :profile_photo, :less_than => 5.megabytes
 	validates_attachment_content_type :profile_photo, :content_type => ['image/jpeg', 'image/png']
 
 	def User.new_remember_token
-  	SecureRandom.urlsafe_base64
+  		SecureRandom.urlsafe_base64
 	end
 
 	def User.encrypt(token)
-   	Digest::SHA1.hexdigest(token.to_s)
+   		Digest::SHA1.hexdigest(token.to_s)
 	end
 
 	def feed
-		posts
+		Post.from_users_followed_by(self)
 	end
 
 	def following?(other_user)

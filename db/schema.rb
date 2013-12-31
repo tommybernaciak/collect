@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131229171308) do
+ActiveRecord::Schema.define(version: 20131231154338) do
+
+  create_table "albums", force: true do |t|
+    t.string   "title"
+    t.string   "artist"
+    t.string   "format"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "collections", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "album_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "collections", ["album_id"], name: "index_collections_on_album_id", using: :btree
+  add_index "collections", ["user_id", "album_id"], name: "index_collections_on_user_id_and_album_id", unique: true, using: :btree
+  add_index "collections", ["user_id"], name: "index_collections_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "content"

@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-#	before_action :set_album, only: [:show, :edit, :update, :destroy]
+	before_action :set_album, only: [:show, :edit, :update, :destroy]
 
 	# GET
   def index
@@ -7,8 +7,17 @@ class AlbumsController < ApplicationController
   end
 
   # GET
+  def show
+    @album = Album.find(params[:id])
+  end
+
+  # GET
   def new
     @album = Album.new
+  end
+
+  # GET
+  def edit
   end
 
   # POST
@@ -28,11 +37,25 @@ class AlbumsController < ApplicationController
   	@album.destroy
   	redirect_to albums_url
   end
+
+  # PATCH/PUT
+  def update
+    respond_to do |format|
+      if @album.update(album_params)
+        format.html { redirect_to @album, notice: 'Album updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @album.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 private
 #    # Use callbacks to share common setup or constraints between actions.
-#    def set_album
-#      @album = Album.find(params[:id])
-#    end
+    def set_album
+      @album = Album.find(params[:id])
+    end
 # Never trust parameters from the internet, only allow the white list through.
     def album_params
       params.require(:album).permit(:title, :artist)

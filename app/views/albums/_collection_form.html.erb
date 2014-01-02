@@ -1,0 +1,9 @@
+<% unless current_user?(@user) %>
+  <div id="collection_form">
+  <% if current_user.album_in_collection?(@album) %>
+    <%= render 'delete_album' %>
+  <% else %>
+    <%= render 'add_album' %>
+  <% end %>
+  </div>
+<% end %>

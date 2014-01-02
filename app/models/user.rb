@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
  	has_many :followers, through: :reverse_relationships, source: :follower
 
  	#collections and albums
- 	has_one 	:collections, dependent: :destroy
- 	has_many	:albums, through: :collections
+ 	has_one 	:collection, class_name: "Collection", dependent: :destroy
+ 	has_many	:albums, through: :collections, source: :album
 
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
@@ -33,11 +33,11 @@ class User < ActiveRecord::Base
 	validates_attachment_content_type :profile_photo, :content_type => ['image/jpeg', 'image/png']
 
 	def User.new_remember_token
-  		SecureRandom.urlsafe_base64
+		SecureRandom.urlsafe_base64
 	end
 
 	def User.encrypt(token)
-   		Digest::SHA1.hexdigest(token.to_s)
+ 		Digest::SHA1.hexdigest(token.to_s)
 	end
 
 	def feed
@@ -55,6 +55,23 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy!
   end
+
+  def collection
+  	Album.added_to_collection(self)
+  end
+
+  def album_in_collection?(album)
+  	self.collection.find_by(album_id: album.id)
+  end
+
+  def add_to_collection!(album)
+  	collection.create!(album_id: album.id)
+  end
+
+  def delete_from_collection!(album)
+    collection.find_by(album_id: album.id).destroy!
+  end
+
 
   private
 

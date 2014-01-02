@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.paginate(page: params[:page])
+    @albums = @user.albums.paginate(page: params[:page])
   end
 
   def new
@@ -59,6 +60,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
+  end
+
+  #albums in collection
+  def albums_in_collection
+    @title = "Collection"
+    @album = Album.find(params[:id])
+    @albums = @album.collected.paginate(page: params[:page])
   end
 
   private

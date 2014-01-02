@@ -10,6 +10,7 @@ Collect::Application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
+  resources :albums
 
   #get "welcome/index"
 

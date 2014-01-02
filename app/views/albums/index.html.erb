@@ -1,0 +1,27 @@
+<h1>Albums</h1>
+
+<td><%= link_to 'Add', new_album_path %></td>
+
+<table>
+  <thead>
+    <tr>
+      <th>TITLE</th>
+      <th>ARTIST</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @albums.each do |album| %>
+      <tr>
+        <td><%= album.title %></td>
+        <td><%= album.artist %></td>
+        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

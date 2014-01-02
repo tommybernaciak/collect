@@ -1,0 +1,18 @@
+<%= form_for(@album) do |f| %>
+    
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, placeholder: "Title" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :artist %><br>
+    <%= f.text_field :artist, placeholder: "artist" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Add", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 	validates :email, format: { with: VALID_EMAIL }
 
 	# used for profile_photo
-	has_attached_file :profile_photo, :styles => {:avatar => "130x130>"},
+	has_attached_file :profile_photo, :styles => {:avatar => "130x130>", :small_avatar => "60x60>"},
 	:url  => "/assets/users/:id/:style/:basename.:extension",
  	:path => ":rails_root/public/assets/users/:id/:style/:basename.:extension"
 

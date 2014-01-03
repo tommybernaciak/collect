@@ -5,7 +5,7 @@ class CollectionsController < ApplicationController
     @album = Album.find(params[:collection][:album_id])
     current_user.collect!(@album)
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to @album }
       format.js
     end
   end
@@ -14,7 +14,7 @@ class CollectionsController < ApplicationController
     @album = Collection.find(params[:id]).album
     current_user.uncollect!(@album)
     respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to @album }
       format.js
     end
   end

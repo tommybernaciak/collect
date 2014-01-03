@@ -6,8 +6,8 @@
         <ul class="nav pull-right">
           <div class="btn-group">
             <li class="btn btn-small"><%= link_to "Home", root_path %></li>
-            <li class="btn btn-small"><%= link_to 'Help', help_path %></li>
             <li class="btn btn-small"><%= link_to 'Albums', albums_path %></li>
+            <li class="btn btn-small"><%= link_to 'Help', help_path %></li>
             <% unless signed_in? %>
               <li class="btn btn-small btn-warning"><%= link_to "Sign in", signin_path %></li>
             <% end %>

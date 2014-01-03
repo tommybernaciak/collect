@@ -1,36 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nick:</strong>
-  <%= @user.nick %>
-</p>
+<div class="row">
+  <div class="span4">
+    <h3><%= @user.nick %></h3>
+    <%= render 'follow_form' if signed_in? %>
+    <%= image_tag @user.profile_photo.url(:avatar) %>
+  </div>
+  <div class="span8">
+    <% if @user.albums.any? %>
+      <h3> Record Collection (<%= @user.albums.count %>)</h3>
+      <ol class="posts">
+        <%= render @albums %>
+      </ol>
+      <%= will_paginate @albums %>
+    <% end %>
+  </div>
+</div>
 
-<%= render 'follow_form' if signed_in? %>
-
-<%= image_tag @user.profile_photo.url(:avatar) %>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<div class="span8">
+<div>
   <% if @user.posts.any? %>
     <h3> Posts (<%= @user.posts.count %>)</h3>
     <ol class="posts">
       <%= render @posts %>
     </ol>
     <%= will_paginate @posts %>
-  <% end %>
-</div>
-
-<div class="span8">
-  <% if @user.albums.any? %>
-    <h3> ALbums (<%= @user.albums.count %>)</h3>
-    <ol class="posts">
-      <%= render @albums %>
-    </ol>
-    <%= will_paginate @albums %>
   <% end %>
 </div>
 

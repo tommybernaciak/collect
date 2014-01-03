@@ -7,7 +7,6 @@ Collect::Application.routes.draw do
     member do
       get :following, :followers
     end
-    resources :albums
   end
 
   resources :relationships, only: [:create, :destroy]

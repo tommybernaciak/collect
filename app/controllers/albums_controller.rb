@@ -51,6 +51,13 @@ class AlbumsController < ApplicationController
     end
   end
 
+  def collectors
+    @title = "collectors"
+    @user = User.find(params[:id])
+    @users = @user.users.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
 private
 #    # Use callbacks to share common setup or constraints between actions.
     def set_album
@@ -58,7 +65,7 @@ private
     end
 # Never trust parameters from the internet, only allow the white list through.
     def album_params
-      params.require(:album).permit(:title, :artist)
+      params.require(:album).permit(:title, :artist, :format)
     end
 
 end

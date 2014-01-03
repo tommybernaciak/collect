@@ -1,3 +1,3 @@
 <%= form_for(current_user.collections.find_by(album_id: @album), html: { method: :delete }, remote: true) do |f| %>
-  <%= f.submit "Delete from collection", class: "btn btn-large" %>
+  <%= f.submit "Delete from my collection", class: "btn btn-large" %>
 <% end %>

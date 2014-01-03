@@ -62,12 +62,14 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
-  #albums in collection
-  def albums_in_collection
-    @title = "Collection"
+  #collections
+  def collected
+    @title = "albums collected"
     @album = Album.find(params[:id])
-    @albums = @album.collected.paginate(page: params[:page])
+    @albums = @album.albums.paginate(page: params[:page])
+    render 'show_follow'
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

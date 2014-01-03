@@ -3,7 +3,7 @@ class CollectionsController < ApplicationController
 
 	def create
     @album = Album.find(params[:collection][:album_id])
-    current_user.add_to_collection!(@album)
+    current_user.collect!(@album)
     respond_to do |format|
       format.html { redirect_to @user }
       format.js
@@ -12,7 +12,7 @@ class CollectionsController < ApplicationController
 
   def destroy
     @album = Collection.find(params[:id]).album
-    current_user.delete_from_collection!(@album)
+    current_user.uncollect!(@album)
     respond_to do |format|
       format.html { redirect_to @user }
       format.js

@@ -8,6 +8,7 @@ Search for albums or
       <th>ID</th>
       <th>TITLE</th>
       <th>ARTIST</th>
+      <th>Format</th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,6 +21,7 @@ Search for albums or
         <td><%= album.id %></td>
         <td><%= album.title %></td>
         <td><%= album.artist %></td>
+        <td><%= album.format %></td>
         <td><%= link_to 'Show', album %></td>
         <td><%= link_to 'Edit', edit_album_path(album) %></td>
         <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>

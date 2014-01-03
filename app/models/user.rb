@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
  	has_many :followers, through: :reverse_relationships, source: :follower
 
  	#collections and albums
- 	has_one 	:collection, class_name: "Collection", dependent: :destroy
- 	has_many	:albums, through: :collections, source: :album
+ 	has_many 	:collections, class_name: "Collection", dependent: :destroy
+ 	has_many	:albums, through: :collections
 
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
@@ -56,22 +56,17 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy!
   end
 
-  def collection
-  	Album.added_to_collection(self)
+	def collected?(some_album)
+  	collections.find_by(album_id: some_album.id)
   end
 
-  def album_in_collection?(album)
-  	self.collection.find_by(album_id: album.id)
+  def collect!(some_album)
+    collections.create!(album_id: some_album.id)
   end
 
-  def add_to_collection!(album)
-  	collection.create!(album_id: album.id)
+  def uncollect!(some_album)
+    collections.find_by(album_id: some_album.id).destroy!
   end
-
-  def delete_from_collection!(album)
-    collection.find_by(album_id: album.id).destroy!
-  end
-
 
   private
 

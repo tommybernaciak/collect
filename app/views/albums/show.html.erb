@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Artist:</strong>
   <%= @album.artist %>
@@ -10,7 +8,13 @@
   <%= @album.title %>
 </p>
 
-<%= render 'collection_form' if signed_in? %>
+<p>
+  <strong>format:</strong>
+  <%= @album.format %>
+</p>
+
+<%= render 'collection_form' %>
+
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>

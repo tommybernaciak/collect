@@ -4,6 +4,7 @@
   <h3><%= @user.nick %></h3>
   <%= render 'follow_form' if signed_in? %>
   <%= image_tag @user.profile_photo.url(:avatar) %>
+  <%= render 'shared/stats' %>
 </div>
 <div class="row">
   <% if @user.albums.any? %>

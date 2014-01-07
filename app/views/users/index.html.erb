@@ -8,9 +8,7 @@
       <th>ID</th>
       <th>Nick</th>
       <th>Email</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Settings</th>
     </tr>
   </thead>
 
@@ -20,14 +18,17 @@
         <td><%= user.id %></td>
         <td><%= user.nick %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <button class="btn btn-mini btn-block"><%= link_to 'Show', user %></button>
+          <button class="btn btn-mini btn-block"><%= link_to 'Edit', edit_user_path(user) %></button>
+          <button class="btn btn-mini btn-block"><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-<button class="btn"><%= link_to 'BACK', admin_path %></button>
-<button class="btn"><%= link_to 'New User', new_user_path %></button>
+<% if current_user.admin? %>
+  <button class="btn"><%= link_to 'Back to Admin Panel', admin_path %></button>
+  <button class="btn"><%= link_to 'Add New User', new_user_path %></button>
+<% end %>

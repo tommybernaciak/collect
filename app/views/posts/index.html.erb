@@ -28,6 +28,6 @@
   </tbody>
 </table>
 
-<br>
-
-<button class="btn"><%= link_to 'BACK', admin_path %></button>
+<% if current_user.admin? %>
+  <button class="btn"><%= link_to 'Back to Admin Panel', admin_path %></button>
+<% end %>

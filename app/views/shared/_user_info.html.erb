@@ -1,9 +1,10 @@
 <div>
 	You are logged in as:
-	<h3><%= current_user.nick %></h3>
-	<%= image_tag current_user.profile_photo.url(:avatar) %>
 	<p>
-		<%= link_to "view my profile", current_user %>
-		<%= pluralize(current_user.posts.count, "post") %>
+		<%= image_tag current_user.profile_photo.url(:avatar) %>
+		<div>
+			<h3><%= current_user.nick %></h3>
+			<%= link_to "view my profile", current_user %>
+		</div>
 	</p>
 </div>

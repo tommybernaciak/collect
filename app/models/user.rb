@@ -1,5 +1,13 @@
 class User < ActiveRecord::Base
+	acts_as_messageable
+
 	has_many :posts, dependent: :destroy
+	#has_many :messages, foreign_key: "sender_id", dependent: :destroy
+	#has_many :senders, through: :messages, source: :sender
+	#has_many :reverse_messages, foreign_key: "receiver_id", dependent: :destroy
+	#has_many :receivers, through: :messages, source: :receiver
+
+	default_scope -> { order('created_at DESC') }
 
 	#relationship - to follow/unfollow users
 	has_many :relationships, foreign_key: "follower_id", dependent: :destroy
@@ -44,6 +52,7 @@ class User < ActiveRecord::Base
 		Post.from_users_followed_by(self)
 	end
 
+	#Feed
 	def following?(other_user)
   	relationships.find_by(followed_id: other_user.id)
   end
@@ -56,6 +65,7 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy!
   end
 
+  #Collection
 	def collected?(some_album)
   	collections.find_by(album_id: some_album.id)
   end
@@ -67,6 +77,15 @@ class User < ActiveRecord::Base
   def uncollect!(some_album)
     collections.find_by(album_id: some_album.id).destroy!
   end
+
+  #Messaging
+  #def messaging?(other_user)
+  #	messages.find_by(receiver_id: other_user.id)
+  #end
+
+  #def send!(other_user)
+  #  messages.create!(receiver_id: other_user.id)
+  #end
 
   private
 

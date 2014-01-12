@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
-    @users = User.all
+    @search = User.search(params[:q])
+    @users = @search.result
   end
 
   def show

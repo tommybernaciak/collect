@@ -1,21 +1,22 @@
 <h1>Albums Database</h1>
 <h3> There are <%= @albums.count %> albums in the database. </h3>
+
 <% if signed_in? %>
-<p>
-  <%= search_form_for @search do |f| %>
-  <div class="field">
-    <%= f.label :title_cont, "Title:" %>
-    <%= f.text_field :title_cont %>
-  </div>
-  <div class="field">
-    <%= f.label :artist_cont, "Artist:" %>
-    <%= f.text_field :artist_cont %>
-  </div>
-  <div class="actions"><%= f.submit "Search" %></div>
-<% end %>
-or
-  <span class="btn"><%= link_to 'Add new album', new_album_path %></span>
-</p>
+  <p>
+    <%= search_form_for @search do |f| %>
+      <div class="field">
+        <%= f.label :title_cont, "Title:" %>
+        <%= f.text_field :title_cont %>
+      </div>
+      <div class="field">
+        <%= f.label :artist_cont, "Artist:" %>
+        <%= f.text_field :artist_cont %>
+      </div>
+      <div class="actions"><%= f.submit "Search" %></div>
+    <% end %>
+    or
+    <span class="btn"><%= link_to 'Add new album', new_album_path %></span>
+  </p>
 <% end %>
 
 <table class="table table-bordered">

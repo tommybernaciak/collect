@@ -7,6 +7,7 @@
           <div class="btn-group">
             <li class="btn btn-small"><i class="icon-home"></i><%= link_to "Home", root_path %></li>
             <li class="btn btn-small"><i class="icon-list"></i><%= link_to 'Albums', albums_path %></li>
+            <li class="btn btn-small"><i class="icon-search"></i><%= link_to 'Users', users_path %></li>
             <li class="btn btn-small"><i class="icon-info-sign"></i><%= link_to 'Help', help_path %></li>
             <% unless signed_in? %>
               <li class="btn btn-small btn-warning"><%= link_to "Sign in", signin_path %></li>
@@ -20,6 +21,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Profile", user_path(current_user) %></li>
+                <li><%= link_to "Messages", user_path(current_user) %></li>
                 <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                 <% if current_user.admin? %>
                   <li class="divider"></li>

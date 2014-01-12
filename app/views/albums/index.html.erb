@@ -1,9 +1,11 @@
 <h1>Albums Database</h1>
 <h3> There are <%= @albums.count %> in the database. </h3>
+<% if signed_in? %>
 <p>
   Search for albums or
   <span class="btn"><%= link_to 'Add new album', new_album_path %></span>
 </p>
+<% end %>
 
 <table class="table table-bordered">
   <thead>

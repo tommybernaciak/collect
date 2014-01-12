@@ -5,9 +5,9 @@
       <nav>
         <ul class="nav pull-right">
           <div class="btn-group">
-            <li class="btn btn-small"><%= link_to "Home", root_path %></li>
-            <li class="btn btn-small"><%= link_to 'Albums', albums_path %></li>
-            <li class="btn btn-small"><%= link_to 'Help', help_path %></li>
+            <li class="btn btn-small"><i class="icon-home"></i><%= link_to "Home", root_path %></li>
+            <li class="btn btn-small"><i class="icon-list"></i><%= link_to 'Albums', albums_path %></li>
+            <li class="btn btn-small"><i class="icon-info-sign"></i><%= link_to 'Help', help_path %></li>
             <% unless signed_in? %>
               <li class="btn btn-small btn-warning"><%= link_to "Sign in", signin_path %></li>
             <% end %>

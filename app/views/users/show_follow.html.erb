@@ -3,6 +3,7 @@
   <aside class="span4">
     <section>
       <h1><%= @user.nick %></h1>
+      <%= image_tag @user.profile_photo.url(:avatar) %>
       <span><%= link_to "view my profile", @user %></span>
       <span><b>posts:</b> <%= @user.posts.count %></span>
     </section>

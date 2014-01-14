@@ -1,0 +1,14 @@
+<h1>New Message</h1>
+message from user:<%= current_user.id %> to  user:<%= @message.receiver_id %>
+<%= form_for [current_user, @message] do |f| %>  
+
+  <div class="field">
+    <%= f.text_area :content, placeholder: "message..." %>
+  </div>
+  <%= f.hidden_field :receiver_id %>
+  
+  <div class="actions">
+    <%= f.submit "Post", class: "btn btn-primary" %>
+  </div>
+<% end %>
+

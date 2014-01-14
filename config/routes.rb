@@ -7,7 +7,7 @@ Collect::Application.routes.draw do
     member do
       get :following, :followers
     end
-    #resources :messages
+    resources :messages
   end
 
   resources :relationships, only: [:create, :destroy]
@@ -21,7 +21,6 @@ Collect::Application.routes.draw do
   match '/help',      to: 'welcome#help',     via: 'get'
   match '/about',     to: 'welcome#about',    via: 'get'
   match '/contact',   to: 'welcome#contact',  via: 'get'
-  #ADMIN PAGE
   match '/admin',     to: 'welcome#admin',    via: 'get'
   #USER
   match '/signup',    to: 'users#new',        via: 'get'

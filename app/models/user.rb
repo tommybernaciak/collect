@@ -1,7 +1,11 @@
 class User < ActiveRecord::Base
-	acts_as_messageable
 
 	has_many :posts, dependent: :destroy
+	
+	#has_many :messages
+	has_many :sent_messages, :class_name => "Message", :foreign_key => "sender_id"
+  has_many :received_messages, :class_name => "Message", :foreign_key => "receiver_id"
+
 	#has_many :messages, foreign_key: "sender_id", dependent: :destroy
 	#has_many :senders, through: :messages, source: :sender
 	#has_many :reverse_messages, foreign_key: "receiver_id", dependent: :destroy
@@ -55,7 +59,7 @@ class User < ActiveRecord::Base
 	#Feed
 	def following?(other_user)
   	relationships.find_by(followed_id: other_user.id)
-  end
+  	end
 
   def follow!(other_user)
     relationships.create!(followed_id: other_user.id)

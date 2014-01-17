@@ -11,6 +11,7 @@ class Message < ActiveRecord::Base
 	validates :receiver_id, presence: true
 	validates :content, presence: true, length: { maximum: 240 }
 
+
 	#ef send_message(sender, receiver)
 	#	receiver.message.
   #  receivers.each do |receiver|

@@ -1,9 +1,12 @@
 class MessagesController < ApplicationController
 	before_action :signed_in_user
 
+  def index
+    @messages = current_user.sent_messages.all
+  end
+
 	def new
   	@message = current_user.sent_messages.build :receiver_id => params[:user_id]
-  	#@message = Message.new
   end
 
   def create
@@ -17,11 +20,6 @@ class MessagesController < ApplicationController
  	end
 
  	private
-    # Use callbacks to share common setup or constraints between actions.
-    #def set_post
-    #  @post = Post.find(params[:id])
-    #end
-    # Never trust parameters from the internet, only allow the white list through.
     def message_params
       params.require(:message).permit(:content, :receiver_id, :sender_id)
     end

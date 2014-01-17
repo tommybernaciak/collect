@@ -1,0 +1,15 @@
+<h1>Messages:</h1>
+<div class="row">
+  <h3><%= current_user.nick %></h3>
+  <%= image_tag current_user.profile_photo.url(:avatar) %>
+  <%= render 'shared/stats' %>
+</div>
+<div class="row">
+  <% if @messages.any? %>
+  	<h4> messages: (<%= @messages.count %>)</h4>
+  	<ol>
+      <%= render @messages %>
+    </ol>
+    
+  <% end %>
+</div>

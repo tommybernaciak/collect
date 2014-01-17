@@ -1,8 +1,19 @@
 <% provide(:title, 'Admin') %>
 
-<h1> ADMIN PAGE</h1>
-<div class="btn-group">
-	<button class="btn"><%= link_to 'Users', users_path %></button>
-	<button class="btn"><%= link_to 'Posts', posts_path %></button>
-	<button class="btn"><%= link_to 'Albums', albums_path %></button>
-</div>
+<h1> ADMIN SETTINGS</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Users</th>
+      <th>Posts</th>
+      <th>Albums</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><button class="btn"><%= link_to 'Users', users_path %></button></td>
+        <td><button class="btn"><%= link_to 'Posts', posts_path %></button></td>
+        <td><button class="btn"><%= link_to 'Albums', albums_path %></button></td>
+      </tr>
+  </tbody>
+</table>

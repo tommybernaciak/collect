@@ -56,6 +56,7 @@ class User < ActiveRecord::Base
 		Post.from_users_followed_by(self)
 	end
 
+
 	#Feed
 	def following?(other_user)
   	relationships.find_by(followed_id: other_user.id)

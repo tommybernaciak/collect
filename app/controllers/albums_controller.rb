@@ -66,7 +66,7 @@ private
     end
 # Never trust parameters from the internet, only allow the white list through.
     def album_params
-      params.require(:album).permit(:title, :artist, :format)
+      params.require(:album).permit(:title, :artist, :format, :year, :label, :country, :details, :release)
     end
 
 end

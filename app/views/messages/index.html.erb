@@ -1,14 +1,20 @@
-<h1>Messages:</h1>
+<h1><%= current_user.nick %>'s Messages:</h1>
+
 <div class="row">
-  <h3><%= current_user.nick %></h3>
-  <%= image_tag current_user.profile_photo.url(:avatar) %>
-  <%= render 'shared/stats' %>
-</div>
-<div class="row">
-  <% if @messages.any? %>
-  	<h4> messages: (<%= @messages.count %>)</h4>
+  <% if @all_sent_messages.any? %>
+  	<h4> Outbox: (<%= @all_sent_messages.count %>)</h4>
   	<ol>
-      <%= render @messages %>
+      <%= render @all_sent_messages %>
+    </ol>
+    
+  <% end %>
+</div>
+
+<div class="row">
+  <% if @all_received_messages.any? %>
+  	<h4> Inbox: (<%= @all_received_messages.count %>)</h4>
+  	<ol>
+      <%= render @all_received_messages %>
     </ol>
     
   <% end %>

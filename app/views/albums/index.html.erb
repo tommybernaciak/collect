@@ -24,8 +24,13 @@
     <tr>
       <th><%= sort_link @search, :title, "Title" %></th>
       <th><%= sort_link @search, :artist, "Artist" %></th>
+      <th>Year</th>
       <th>Format</th>
-      <% if signed_in? and current_user.admin? %>
+      <th>Label</th>
+      <th>Country</th>
+      <th>Release</th>
+      <th>Details</th>
+      <% if signed_in? %>
         <th>Settings</th>
       <% end %>
     </tr>
@@ -36,12 +41,19 @@
       <tr>
         <td><%= album.title %></td>
         <td><%= album.artist %></td>
+        <td><%= album.year %></td>
         <td><%= album.format %></td>
-        <% if signed_in? and current_user.admin? %>
+        <td><%= album.label %></td>
+        <td><%= album.country %></td>
+        <td><%= album.release %></td>
+        <td><%= album.details %></td>
+        <% if signed_in? %>
           <td>
             <button class="btn btn-mini btn-block"><%= link_to 'Show', album %></button>
             <button class="btn btn-mini btn-block"><%= link_to 'Edit', edit_album_path(album) %></button>
-            <button class="btn btn-mini btn-block"><%= link_to 'Delete', album, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+            <% if current_user.admin? %>
+              <button class="btn btn-mini btn-block"><%= link_to 'Delete', album, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+              <% end %>
           </td>
         <% end %>
       </tr>

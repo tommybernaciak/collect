@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140114192920) do
+ActiveRecord::Schema.define(version: 20140117234342) do
 
   create_table "albums", force: true do |t|
     t.string   "title"
@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(version: 20140114192920) do
     t.string   "format"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "year"
+    t.string   "label"
+    t.string   "country"
+    t.text     "details"
+    t.string   "release"
   end
 
   create_table "collections", force: true do |t|
@@ -71,6 +76,11 @@ ActiveRecord::Schema.define(version: 20140114192920) do
     t.string   "profile_photo_content_type"
     t.integer  "profile_photo_file_size"
     t.datetime "profile_photo_updated_at"
+    t.string   "location"
+    t.string   "name"
+    t.string   "country"
+    t.text     "about"
+    t.integer  "age"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

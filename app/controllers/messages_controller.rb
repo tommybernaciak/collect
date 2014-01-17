@@ -2,7 +2,8 @@ class MessagesController < ApplicationController
 	before_action :signed_in_user
 
   def index
-    @messages = current_user.sent_messages.all
+    @all_sent_messages = current_user.sent_messages.all
+    @all_received_messages = current_user.received_messages.all
   end
 
 	def new

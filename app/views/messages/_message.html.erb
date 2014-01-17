@@ -1,10 +1,9 @@
-<li>
-	<div class="row">
-		<div class="span11">
-  		<span class="content"><%= message.content %></span>
-  		<span class="timestamp">
-    		Posted <%= time_ago_in_words(message.created_at) %> ago
-  		</span>
-  	</div>
-  </div>
-</li>
+<div class="row">
+  <span class="content"><%= current_user.nick %></span>
+  <span class="content"><%= message.receiver_id %></span>
+  <span class="content"><%= message.sender_id %></span>
+	<span class="content"><%= message.content %></span>
+	<span class="timestamp">
+		Posted <%= time_ago_in_words(message.created_at) %> ago
+	</span>
+</div>

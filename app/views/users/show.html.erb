@@ -2,7 +2,7 @@
 
 <div class="row">
   <h3><%= @user.nick %></h3>
-  <%= image_tag @user.profile_photo.url(:avatar) %>
+  <%= image_tag @user.profile_photo.url(:avatar), :class => "img-polaroid" %>
   <%= render 'shared/stats' %>
   <div>
     <%= render 'follow_form' if signed_in? %>

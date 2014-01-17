@@ -1,32 +1,23 @@
 class User < ActiveRecord::Base
-
+	
 	has_many :posts, dependent: :destroy
 	
-	#has_many :messages
 	has_many :sent_messages, :class_name => "Message", :foreign_key => "sender_id"
   has_many :received_messages, :class_name => "Message", :foreign_key => "receiver_id"
 
-	#has_many :messages, foreign_key: "sender_id", dependent: :destroy
-	#has_many :senders, through: :messages, source: :sender
-	#has_many :reverse_messages, foreign_key: "receiver_id", dependent: :destroy
-	#has_many :receivers, through: :messages, source: :receiver
-
 	default_scope -> { order('created_at DESC') }
 
-	#relationship - to follow/unfollow users
 	has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 	has_many :followed_users, through: :relationships, source: :followed
 	has_many :reverse_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
  	has_many :followers, through: :reverse_relationships, source: :follower
 
- 	#collections and albums
  	has_many 	:collections, class_name: "Collection", dependent: :destroy
  	has_many	:albums, through: :collections
 
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
 
-	#password and email validation
 	has_secure_password
 	validates :password, length: { minimum: 6 }
 	validates_presence_of :email, :nick
@@ -35,7 +26,6 @@ class User < ActiveRecord::Base
 	VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email, format: { with: VALID_EMAIL }
 
-	# used for profile_photo
 	has_attached_file :profile_photo, :styles => {:avatar => "130x130>", :small_avatar => "60x60>"},
 	:url  => "/assets/users/:id/:style/:basename.:extension",
  	:path => ":rails_root/public/assets/users/:id/:style/:basename.:extension"
@@ -55,7 +45,6 @@ class User < ActiveRecord::Base
 	def feed
 		Post.from_users_followed_by(self)
 	end
-
 
 	#Feed
 	def following?(other_user)
@@ -83,17 +72,7 @@ class User < ActiveRecord::Base
     collections.find_by(album_id: some_album.id).destroy!
   end
 
-  #Messaging
-  #def messaging?(other_user)
-  #	messages.find_by(receiver_id: other_user.id)
-  #end
-
-  #def send!(other_user)
-  #  messages.create!(receiver_id: other_user.id)
-  #end
-
   private
-
   def create_remember_token
     self.remember_token = User.encrypt(User.new_remember_token)
   end

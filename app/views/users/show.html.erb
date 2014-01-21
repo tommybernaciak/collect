@@ -22,6 +22,16 @@
 </div>
 
 <div class="row">
+  <% if @user.albums.any? %>
+    <h4> Whishlist (<%= @user.albums.count %>)</h4>
+    <ol class="posts">
+      <%= render @albums %>
+    </ol>
+    <%= will_paginate @albums %>
+  <% end %>
+</div>
+
+<div class="row">
   <% if @user.posts.any? %>
     <h4> Posts (<%= @user.posts.count %>)</h4>
     <ol class="posts">

@@ -1,4 +1,5 @@
 <%= form_for(current_user.collections.build(album_id: @album.id), remote: true) do |f| %>
   <div><%= f.hidden_field :album_id %></div>
   <%= f.submit "Add to my collection", class: "btn btn-large btn-primary" %>
+  <%= f.check_box :to_buy %>
 <% end %>

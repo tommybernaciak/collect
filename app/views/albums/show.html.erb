@@ -9,12 +9,28 @@
 </p>
 
 <p>
+  <strong>year:</strong>
+  <%= @album.year %>
+</p>
+
+<p>
   <strong>format:</strong>
   <%= @album.format %>
 </p>
 
+<p>
+  <strong>label:</strong>
+  <%= @album.label %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @album.country %>
+</p>
+
 <%= render 'collection_form' %>
 
+<%= render 'exchange_form' %>
 
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>

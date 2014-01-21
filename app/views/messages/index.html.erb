@@ -1,21 +1,20 @@
 <h1><%= current_user.nick %>'s Messages:</h1>
 
 <div class="row">
-  <% if @all_sent_messages.any? %>
-  	<h4> Outbox: (<%= @all_sent_messages.count %>)</h4>
-  	<ol>
-      <%= render @all_sent_messages %>
-    </ol>
-    
-  <% end %>
-</div>
-
-<div class="row">
-  <% if @all_received_messages.any? %>
-  	<h4> Inbox: (<%= @all_received_messages.count %>)</h4>
-  	<ol>
-      <%= render @all_received_messages %>
-    </ol>
-    
-  <% end %>
+  <div class="span5" id="messages">
+    <% if @all_sent_messages.any? %>
+  	 <h4> Outbox: (<%= @all_sent_messages.count %>)</h4>
+  	 <ol>
+        <%= render @all_sent_messages %>
+      </ol>
+    <% end %>
+  </div>
+  <div class="span5" id="messages">
+    <% if @all_received_messages.any? %>
+    	<h4> Inbox: (<%= @all_received_messages.count %>)</h4>
+    	<ol>
+        <%= render @all_received_messages %>
+      </ol>
+    <% end %>
+  </div>
 </div>

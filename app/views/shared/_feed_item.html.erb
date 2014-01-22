@@ -1,7 +1,7 @@
 <li id="<%= feed_item.id %>">
 	<div class="row">
 		<div class="span1">
-			<%= image_tag feed_item.user.profile_photo.url(:small_avatar) %>
+			<%= image_tag feed_item.user.profile_photo.url(:small_avatar), :class => "img-rounded" %>
 		</div>
 		<div class="span7">
   		<h5><%= link_to feed_item.user.nick, feed_item.user %></h5>

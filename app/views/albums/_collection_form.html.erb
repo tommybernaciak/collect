@@ -2,6 +2,7 @@
   <div id="collection_form">
   <% if current_user.collected?(@album) %>
     <%= render 'delete_album' %>
+    <%= render 'buy_album' %>
   <% else %>
     <%= render 'add_album' %>
   <% end %>

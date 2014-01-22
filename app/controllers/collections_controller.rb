@@ -11,14 +11,10 @@ class CollectionsController < ApplicationController
   end
 
   def update
-    @album = Album.find(params[:collection][:album_id])
-    current_user.collect!(@album)
+    @collection = Collection.find(params[:id])
     @collection.update_attributes(params[:to_buy])
-    respond_to do |format|
-      format.html { redirect_to @album }
-      format.js
-    end
-end
+    #Collection.where(to_buy: true)
+  end
 
   def destroy
     @album = Collection.find(params[:id]).album

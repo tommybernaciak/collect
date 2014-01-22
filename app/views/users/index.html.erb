@@ -20,6 +20,10 @@
       <th>ID</th>
       <th>Nick</th>
       <th>Email</th>
+      <th>location</th>
+      <th>name</th>
+      <th>Country</th>
+      <th>Age</th>
       <% if signed_in? and current_user.admin? %>
         <th>Settings</th>
       <% end %>
@@ -32,6 +36,10 @@
         <td><%= user.id %></td>
         <td><%= user.nick %></td>
         <td><%= user.email %></td>
+        <td><%= user.location %></td>
+        <td><%= user.name %></td>
+        <td><%= user.country %></td>
+        <td><%= user.age %></td>
         <% if signed_in? and current_user.admin? %>
           <td>
             <button class="btn btn-mini btn-block"><%= link_to 'Show', user %></button>

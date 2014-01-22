@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   def index
     @all_sent_messages = current_user.sent_messages.all
     @all_received_messages = current_user.received_messages.all
+    @sender = User.find(params[:user_id])
   end
 
 	def new

@@ -1,7 +1,7 @@
 <h1><%= current_user.nick %>'s Messages:</h1>
 
 <div class="row">
-  <div class="span5" id="messages">
+  <div class="span6" id="messages">
     <% if @all_sent_messages.any? %>
   	 <h4> Outbox: (<%= @all_sent_messages.count %>)</h4>
   	 <ol>
@@ -9,7 +9,7 @@
       </ol>
     <% end %>
   </div>
-  <div class="span5" id="messages">
+  <div class="span6" id="messages">
     <% if @all_received_messages.any? %>
     	<h4> Inbox: (<%= @all_received_messages.count %>)</h4>
     	<ol>

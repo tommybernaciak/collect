@@ -1,35 +1,44 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-  <h3><%= @user.nick %></h3>
-  <%= image_tag @user.profile_photo.url(:avatar), :class => "img-polaroid" %>
-  <%= render 'shared/stats' %>
-  <div>
-    <%= render 'follow_form' if signed_in? %>
-    <% unless @user == current_user %>
-      <button class="btn btn-large"><%= link_to 'Send Message', new_user_message_path(@user) %></button>
-    <% end %>
+  <div class="span3">
+    <h3><%= @user.nick %></h3>
+    <%= image_tag @user.profile_photo.url(:avatar), :class => "img-polaroid" %>
+  </div>
+  <div class="span9">
+    <p><%= @user.location %>, <%= @user.name %>, <%= @user.country %>, <%= @user.about %>, <%= @user.age %></p>
+    <%= render 'shared/stats' %>
+    <div>
+      <%= render 'follow_form' if signed_in? %>
+      <% unless @user == current_user %>
+        <button class="btn btn-large"><%= link_to 'Send Message', new_user_message_path(@user) %></button>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="row">
   <% if @user.albums.any? %>
     <h4> Record Collection (<%= @user.albums.count %>)</h4>
-    <ol class="posts">
-      <%= render @albums %>
-    </ol>
-    <%= will_paginate @albums %>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Artist</th>
+          <th>Year</th>
+          <th>Format</th>
+          <th>Label</th>
+          <th>Country</th>
+          <th>Release</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @albums %>
+      </tbody>
+    </table>
   <% end %>
 </div>
 
-<div class="row">
-  <% if @user.albums.any? %>
-    <h4> Whishlist (<%= @user.albums.count %>)</h4>
-    <ol class="posts">
-      <%= render @albums %>
-    </ol>
-    <%= will_paginate @albums %>
-  <% end %>
-</div>
 
 <div class="row">
   <% if @user.posts.any? %>

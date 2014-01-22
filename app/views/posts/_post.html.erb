@@ -1,7 +1,7 @@
 <li>
 	<div class="row">
 		<div class="span1">
-			<%= image_tag post.user.profile_photo.url(:small_avatar) %>
+			<%= image_tag post.user.profile_photo.url(:small_avatar), :class => "img-rounded" %>
 		</div>
 		<div class="span11">
   		<span class="content"><%= post.content %></span>

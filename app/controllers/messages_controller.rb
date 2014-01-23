@@ -1,10 +1,12 @@
 class MessagesController < ApplicationController
 	before_action :signed_in_user
+  #before_action :set_message, only: [:index]
 
   def index
     @all_sent_messages = current_user.sent_messages.all
     @all_received_messages = current_user.received_messages.all
-    @sender = User.find(params[:user_id])
+    #@message = Message.find(params[:message][:id])
+    #@sender = User.find(@message.sender_id)
   end
 
 	def new
@@ -22,6 +24,12 @@ class MessagesController < ApplicationController
  	end
 
  	private
+
+  # Use callbacks to share common setup or constraints between actions.
+    #def set_message
+    #  @message = Message.find(params[:id])
+    #end
+
     def message_params
       params.require(:message).permit(:content, :receiver_id, :sender_id)
     end

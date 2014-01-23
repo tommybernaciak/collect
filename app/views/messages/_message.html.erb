@@ -1,9 +1,6 @@
 <div class="row">
-	Receiver ID:
-  <span class="content"><%= message.receiver_id %></span>
-  Sender ID:
-  <span class="content"><%= message.sender_id %></span>
-  ŹLLLLLLEEEEEEEEEEEEEEEEEEEEEEEE<span class="content"><%= @sender.nick %></span>
+  from:<span class="content"><%= message.sender.nick %></span>
+  to:<span class="content"><%= message.receiver.nick %></span>
   Content:
 	<span class="content"><%= message.content %></span>
 	<span class="timestamp">

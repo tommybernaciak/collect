@@ -72,6 +72,10 @@ class User < ActiveRecord::Base
     collections.find_by(album_id: some_album.id).destroy!
   end
 
+  def buy!(some_album)
+    collections.update!(album_id: some_album.id)
+  end
+
   private
   def create_remember_token
     self.remember_token = User.encrypt(User.new_remember_token)

@@ -29,13 +29,19 @@
           <th>Label</th>
           <th>Country</th>
           <th>Release</th>
-          <th>Details</th>
         </tr>
       </thead>
       <tbody>
         <%= render @albums %>
       </tbody>
     </table>
+  <% end %>
+</div>
+
+<div class="row">
+  <% if @user.collections.any? %>
+    <h4> Collection (<%= @user.collections.count %>)</h4>
+  <%= render @collections %>
   <% end %>
 </div>
 

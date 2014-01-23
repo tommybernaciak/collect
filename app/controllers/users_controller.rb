@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.paginate(page: params[:page])
     @albums = @user.albums.paginate(page: params[:page])
+    @collections = @user.collections
   end
 
   def new

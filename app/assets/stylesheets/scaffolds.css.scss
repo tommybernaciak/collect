@@ -1,5 +1,8 @@
 body {
-  background-color: #fff;
+  background:  -webkit-linear-gradient(bottom, #eee 0%, #ed697c 100%);
+  background: -o-linear-gradient(bottom, #eee 0%, #ed697c 100%);
+  background: -moz-linear-gradient(bottom, #eee 0%, #ed697c 100%);
+  background: linear-gradient(bottom, #eee 0%, #ed697c 100%);
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -21,11 +24,12 @@ pre {
 a {
   color: #000;
   &:visited {
-    color: #666;
+    color: #000;
   }
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: #000;
+    text-decoration: none;
+    background-color: transparent;
   }
 }
 
@@ -33,6 +37,10 @@ div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
+}
+
+table{
+  background-color: #fff;
 }
 
 #notice {

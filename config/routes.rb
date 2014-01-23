@@ -11,7 +11,7 @@ Collect::Application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
-  resources :collections, only: [:create,:update, :destroy]
+  resources :collections
   resources :albums
 
   #get "welcome/index"

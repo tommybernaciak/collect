@@ -1,6 +1,10 @@
 class CollectionsController < ApplicationController
 	before_action :signed_in_user
 
+  #def index
+  #  @collections = Collection.all
+  #end
+
 	def create
     @album = Album.find(params[:collection][:album_id])
     current_user.collect!(@album)
@@ -10,10 +14,17 @@ class CollectionsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
-    @collection = Collection.find(params[:id])
-    @collection.update_attributes(params[:to_buy])
-    #Collection.where(to_buy: true)
+    @collection = Collection.find(params[:id]).album
+    if @collection.update_attributes(collection_params)
+      flash[:success] = "OK"
+      redirect_to current_user
+    else
+      flash[:success] = "Dupa"
+    end
   end
 
   def destroy
@@ -24,6 +35,25 @@ class CollectionsController < ApplicationController
       format.js
     end
   end
+
+  #def add_to_buy
+  #  @album = Collection.find(params[:id]).album
+  #  current_user.buy!(@album)
+  #  @album.update_attributes(to_buy: 'true')
+  #  respond_to do |format|
+  #    format.html { redirect_to @album }
+  #    format.js
+  #  end
+  #end
+
+#<%= form_for(current_user.collection(album_id: @album, :to_buy => true), remote: true) do |f| %>
+#  <div><%= f.hidden_field :album_id %></div>
+#  <div><%= f.hidden_field :to_buy%></div>
+#  <%= f.submit "Add to my wishlist", class: "btn btn-large btn-primary" %>
+#<% end %>
+
+  #def add_to_sell
+  #end
 
   private
     def collection_params

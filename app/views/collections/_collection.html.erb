@@ -1,0 +1,10 @@
+<p><%= collection.album_id %></p>
+<p><%= collection.user_id %></p>
+<p><%= collection.for_sale %></p>
+
+<%= form_for collection do |f| %>
+  <div><%= f.check_box :for_sale%></div>
+  <%= f.submit "sale", class: "btn btn-primary" %>
+<% end %>
+
+

@@ -19,11 +19,12 @@ class CollectionsController < ApplicationController
 
   def update
     @collection = Collection.find(params[:id]).album
-    if @collection.update_attributes(collection_params)
-      flash[:success] = "OK"
+    if @collection.update_attributes(params[:for_sale])
+      flash[:success] = "success"
       redirect_to current_user
     else
-      flash[:success] = "Dupa"
+      flash[:warning] = "not working"
+      redirect_to current_user
     end
   end
 

@@ -4,7 +4,7 @@ html, body {
 }
 
 body{
-  padding-top: 60px;
+  padding-top: 100px;
   background-color: #606666;
 }
 
@@ -57,18 +57,13 @@ header {
 }
 
 #logo {
+  height: 60px;
+  width: 140px;
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
   padding-top: 2px;
-  font-weight: bold;
-  line-height: 1;
   border: 5px solid #fff;
   &:hover {
-    color: #fff;
     text-decoration: none;
     background-color: transparent;
   }

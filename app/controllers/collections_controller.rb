@@ -37,33 +37,6 @@ class CollectionsController < ApplicationController
     end
   end
 
-  #def add_to_buy
-  #  @album = Collection.find(params[:id]).album
-  #  current_user.buy!(@album)
-  #  @album.update_attributes(to_buy: 'true')
-  #  respond_to do |format|
-  #    format.html { redirect_to @album }
-  #    format.js
-  #  end
-  #end
-
-#  def buy
-#    @album = Album.find(params[:collection][:album_id])
-#    @album.update_attributes(to_buy: params[:collection][:to_buy])
-#    respond_to do |format|
-#         format.js
-#    end
-#end 
-
-#<%= form_for(current_user.collection(album_id: @album, :to_buy => true), remote: true) do |f| %>
-#  <div><%= f.hidden_field :album_id %></div>
-#  <div><%= f.hidden_field :to_buy%></div>
-#  <%= f.submit "Add to my wishlist", class: "btn btn-large btn-primary" %>
-#<% end %>
-
-  #def add_to_sell
-  #end
-
   private
     def collection_params
       params.require(:collection).permit(:to_buy, :for_sale)

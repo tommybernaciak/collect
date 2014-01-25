@@ -1,15 +1,21 @@
-<p><%= collection.album_id %></p>
-<p><%= collection.user_id %></p>
-<p><%= collection.for_sale %></p>
-<p><%= collection.to_buy %></p>
-<p><%= collection.id %></p>
+<tr>
+  <td><%= link_to collection.album.title, collection.album %></td>
+  <td><%= collection.album.artist %></td>
+  <td><%= collection.album.year %></td>
+  <td><%= collection.album.format %></td>
+  <td><%= collection.album.label %></td>
+  <td><%= collection.album.country %></td>
+  <td><%= collection.album.release %></td>
+  <td>
+  	<%= form_for collection do |f| %>
+  		<div><%= f.check_box :to_buy %></div>
+	</td>
+	<td>
+  		<div><%= f.check_box :for_sale %></div>
+  		<div><%= f.submit 'update' %></div>
+		<% end %>
+	</td>
+</tr>
 
-<%= form_for collection do |f| %>
-	<div><%= f.label :for_sale %></div>
-  <div><%= f.check_box :for_sale %></div>
-  	<div><%= f.label :to_buy %></div>
-  <div><%= f.check_box :to_buy %></div>
-  <%= f.submit "change", class: "btn btn-primary" %>
-<% end %>
 
 

@@ -13,7 +13,6 @@ Collect::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :collections
   resources :albums
-
   #get "welcome/index"
 
   root 'welcome#index'

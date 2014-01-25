@@ -19,7 +19,7 @@ class CollectionsController < ApplicationController
 
   def update
     @collection = Collection.find(params[:id]).album
-    if @collection.update_attributes(params[:for_sale])
+    if @collection.update(collection_params)
       flash[:success] = "success"
       redirect_to current_user
     else
@@ -46,6 +46,14 @@ class CollectionsController < ApplicationController
   #    format.js
   #  end
   #end
+
+#  def buy
+#    @album = Album.find(params[:collection][:album_id])
+#    @album.update_attributes(to_buy: params[:collection][:to_buy])
+#    respond_to do |format|
+#         format.js
+#    end
+#end 
 
 #<%= form_for(current_user.collection(album_id: @album, :to_buy => true), remote: true) do |f| %>
 #  <div><%= f.hidden_field :album_id %></div>

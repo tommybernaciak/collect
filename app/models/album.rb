@@ -6,4 +6,6 @@ class Album < ActiveRecord::Base
 	validates :year, format: {with: /\d/, message: "only allows numbers"}
 	validates :format, inclusion: { in: %w(CD DVD LP), message: "%{value} is not a valid format" }
 
+	attr_accessor :to_buy, :for_sale
+
 end

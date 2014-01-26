@@ -1,7 +1,7 @@
 <div>
 	You are logged in as:
 	<p>
-		<%= image_tag current_user.profile_photo.url(:avatar) %>
+		<%= image_tag current_user.profile_photo.url(:avatar), :class => "img-polaroid" %>
 		<div>
 			<h3><%= current_user.nick %></h3>
 			<%= link_to "view my profile", current_user %>

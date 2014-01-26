@@ -3,7 +3,8 @@
 <h3> There are <%= @users.count %> registered users. </h3>
 
 <% if signed_in? %>
-  <p>
+  <div class="row" style="text-align:center;">
+    <h2> Search for users</h2>
     <%= search_form_for @search do |f| %>
       <div class="field">
         <%= f.label :nick_cont, "Nick:" %>
@@ -11,21 +12,21 @@
       </div>
       <div class="actions"><%= f.submit "Search" %></div>
     <% end %>
-  </p>
+  </div>
 <% end %>
 
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Nick</th>
+      <th><%= sort_link @search, :nick, "Nick" %></th>
       <th>Email</th>
       <th>location</th>
       <th>name</th>
       <th>Country</th>
       <th>Age</th>
       <% if signed_in? and current_user.admin? %>
-        <th>Admin</th>
+        <th>id</th>
+        <th>Admin?</th>
         <th>Settings</th>
       <% end %>
     </tr>
@@ -34,14 +35,14 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= user.nick %></td>
+        <td><%= link_to user.nick, user %></td>
         <td><%= user.email %></td>
         <td><%= user.location %></td>
         <td><%= user.name %></td>
         <td><%= user.country %></td>
         <td><%= user.age %></td>
         <% if signed_in? and current_user.admin? %>
+          <td><%= user.id %></td>
           <td><%= user.admin %></td>
           <td>
             <button class="btn btn-mini btn-block"><%= link_to 'Show', user %></button>
@@ -55,6 +56,6 @@
 </table>
 
 <% if signed_in? and current_user.admin? %>
-  <button class="btn"><%= link_to 'Back to Admin Panel', admin_path %></button>
+  <button class="btn"><%= link_to 'Go to Admin Panel', admin_path %></button>
   <button class="btn"><%= link_to 'Add New User', new_user_path %></button>
 <% end %>

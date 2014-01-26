@@ -41,11 +41,33 @@
   <% end %>
 </div>
 <div class="row">
+  <h4> Record Collection</h4>
   <% @collections.each do |collection| %>
-    <%= collection.id %>
-    <%= collection.album_id %>
-    <%= collection.to_buy %>
-    <%= collection.for_sale %>
+    <% if collection.buy == false and collection.sell == false %>
+      <%= collection.id %>
+      <%= collection.album_id %>
+      <%= collection.album.title %>
+    <% end %>
+  <% end %>
+</div>
+<div class="row">
+  <h4> For Sale</h4>
+  <% @collections.each do |collection| %>
+    <% if collection.sell == true %>
+      <%= collection.id %>
+      <%= collection.album_id %>
+      <%= collection.album.title %>
+    <% end %>
+  <% end %>
+</div>
+<div class="row">
+  <h4> Wishlist</h4>
+  <% @collections.each do |collection| %>
+    <% if collection.buy == true %>
+      <%= collection.id %>
+      <%= collection.album_id %>
+      <%= collection.album.title %>
+    <% end %>
   <% end %>
 </div>
 

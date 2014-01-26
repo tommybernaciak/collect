@@ -2,21 +2,24 @@
 <h3> There are <%= @albums.count %> albums in the database. </h3>
 
 <% if signed_in? %>
-  <p>
-    <%= search_form_for @search do |f| %>
-      <div class="field">
-        <%= f.label :title_cont, "Title:" %>
-        <%= f.text_field :title_cont %>
-      </div>
-      <div class="field">
-        <%= f.label :artist_cont, "Artist:" %>
-        <%= f.text_field :artist_cont %>
-      </div>
-      <div class="actions"><%= f.submit "Search" %></div>
-    <% end %>
-    or
-    <span class="btn"><%= link_to 'Add new album', new_album_path %></span>
-  </p>
+  <div class="row">
+    <div class="span6" style="text-align:center;">
+      <h2> Search for album</h2>
+      <%= search_form_for @search do |f| %>
+        <div class="field">
+          <%= f.label :title_cont, "Title:" %>
+          <%= f.text_field :title_cont %>
+          <%= f.label :artist_cont, "Artist:" %>
+          <%= f.text_field :artist_cont %>
+        </div>
+        <%= f.submit "Search" %>
+      <% end %>
+    </div>
+    <div class="span6" style="text-align:center;">
+      <h2>or add new album</h2>
+      <button class="btn"><%= link_to 'Add new album', new_album_path %></button>
+    </div>
+  </div>
 <% end %>
 
 <table class="table table-bordered">
@@ -29,7 +32,6 @@
       <th>Label</th>
       <th>Country</th>
       <th>Release</th>
-      <th>Details</th>
       <% if signed_in? %>
         <th>Settings</th>
       <% end %>
@@ -46,7 +48,6 @@
         <td><%= album.label %></td>
         <td><%= album.country %></td>
         <td><%= album.release %></td>
-        <td><%= album.details %></td>
         <% if signed_in? %>
           <td>
             <button class="btn btn-mini btn-block"><%= link_to 'Show', album %></button>
@@ -62,5 +63,5 @@
 </table>
 
 <% if signed_in? and current_user.admin? %>
-  <button class="btn"><%= link_to 'Back to Admin Panel', admin_path %></button>
+  <button class="btn"><%= link_to 'Go to Admin Panel', admin_path %></button>
 <% end %>

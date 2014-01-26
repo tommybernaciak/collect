@@ -15,14 +15,17 @@ class CollectionsController < ApplicationController
   end
 
   def edit
+    @collection = Collection.find(params[:id])
   end
 
   def update
-    @collection = Collection.find(params[:id]).album
+    @collection = Collection.find(params[:collection][:id])
     if @collection.update(collection_params)
+      Rails.logger.info(@collection.errors.messages.inspect)
       flash[:success] = "success"
       redirect_to current_user
     else
+      Rails.logger.info(@collection.errors.messages.inspect)
       flash[:warning] = "not working"
       redirect_to current_user
     end
@@ -39,6 +42,6 @@ class CollectionsController < ApplicationController
 
   private
     def collection_params
-      params.require(:collection).permit(:to_buy, :for_sale)
+      params.require(:collection).permit(:id, :to_buy, :for_sale)
     end
 end

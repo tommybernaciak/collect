@@ -7,7 +7,10 @@
   <td><%= collection.album.country %></td>
   <td><%= collection.album.release %></td>
   <td>
-  	<%= form_for collection do |f| %>
+    <button class="btn btn-mini btn-block"><%= link_to 'Edit', edit_collection_path(collection) %></button>
+    <%= collection.id %>
+  	<%= form_for collection, url: collection_path do |f| %>
+      <div><%= f.hidden_field :id %></div>
   		<div><%= f.check_box :to_buy %></div>
 	</td>
 	<td>

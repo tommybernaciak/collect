@@ -1,0 +1,14 @@
+<h1>Editing Collection</h1>
+
+<%= @collection.id %>
+<%= @collection.album.title %>
+<%= @collection.to_buy %>
+<%= @collection.for_sale %>
+<%= @collection.album_id %>
+
+<%= form_for @collection do |f| %>
+      <div><%= f.hidden_field :id %></div>
+  		<div><%= f.check_box :to_buy %></div>
+  		<div><%= f.check_box :for_sale %></div>
+  		<div><%= f.submit 'update' %></div>
+  		<% end %>

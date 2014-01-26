@@ -16,27 +16,6 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <% if @user.albums.any? %>
-    <h4> Record Collection (<%= @user.albums.count %>)</h4>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Artist</th>
-          <th>Year</th>
-          <th>Format</th>
-          <th>Label</th>
-          <th>Country</th>
-          <th>Release</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @albums %>
-      </tbody>
-    </table>
-  <% end %>
-</div>
 
 <div class="row">
   <% if @user.collections.any? %>

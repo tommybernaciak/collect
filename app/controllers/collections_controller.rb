@@ -42,6 +42,6 @@ class CollectionsController < ApplicationController
 
   private
     def collection_params
-      params.require(:collection).permit(:id, :to_buy, :for_sale)
+      params.require(:collection).permit(:sell, :buy, :id, :to_buy, :for_sale)
     end
 end

@@ -4,11 +4,13 @@
 <%= @collection.album.title %>
 <%= @collection.to_buy %>
 <%= @collection.for_sale %>
+<%= @collection.created_at %>
 <%= @collection.album_id %>
+<%= @collection.buy %>
 
 <%= form_for @collection do |f| %>
       <div><%= f.hidden_field :id %></div>
-  		<div><%= f.check_box :to_buy %></div>
-  		<div><%= f.check_box :for_sale %></div>
+  		<div><%= f.check_box :buy %></div>
+  		<div><%= f.check_box :sell %></div>
   		<div><%= f.submit 'update' %></div>
   		<% end %>

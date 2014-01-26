@@ -40,7 +40,14 @@
     </table>
   <% end %>
 </div>
-
+<div class="row">
+  <% @collections.each do |collection| %>
+    <%= collection.id %>
+    <%= collection.album_id %>
+    <%= collection.to_buy %>
+    <%= collection.for_sale %>
+  <% end %>
+</div>
 
 <div class="row">
   <% if @user.posts.any? %>

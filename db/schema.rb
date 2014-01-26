@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121225421) do
+ActiveRecord::Schema.define(version: 20140126192800) do
 
   create_table "albums", force: true do |t|
     t.string   "title"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20140121225421) do
     t.datetime "updated_at"
     t.boolean  "for_sale"
     t.boolean  "to_buy"
+    t.boolean  "buy",        default: false
+    t.boolean  "sell",       default: false
   end
 
   add_index "collections", ["album_id"], name: "index_collections_on_album_id", using: :btree

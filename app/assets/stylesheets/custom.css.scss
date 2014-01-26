@@ -73,9 +73,10 @@ header {
 footer {
   height:30px;
   background:#eee;
-  width: 100%;
   padding-top: 10px;
-  border-top: 3px solid #0044cc;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top: 3px solid #0082cc;
   color: #333;
   a {
     color: #333;
@@ -120,14 +121,14 @@ footer {
 
   li {
     padding: 10px 0;
-    border-top: 1px solid #0044cc;
+    border-top: 1px solid #0082cc;
   }
 }
 .content {
   display: block;
 }
 .timestamp {
-  color: $grayLight;
+  color: #0082cc;
 }
 
 /* not used right now */
@@ -144,13 +145,13 @@ footer {
     width: 66px;
     float: left;
     padding: 0 10px;
-    border: 1px solid #0044cc;
+    border: 1px solid #0082cc;
     color: #333;
     text-align: center;
     &:hover {
       background-color: transparent;
       text-decoration: none;
-      color: $yellow;
+      color: #0082cc;
     }
   }
   strong {

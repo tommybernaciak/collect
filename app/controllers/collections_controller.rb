@@ -22,7 +22,7 @@ class CollectionsController < ApplicationController
     @collection = Collection.find(params[:collection][:id])
     if @collection.update(collection_params)
       Rails.logger.info(@collection.errors.messages.inspect)
-      flash[:success] = "success"
+      flash[:success] = "updated!"
       redirect_to current_user
     else
       Rails.logger.info(@collection.errors.messages.inspect)

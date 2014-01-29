@@ -9,17 +9,17 @@
 </p>
 
 <p>
-  <strong>year:</strong>
+  <strong>Year:</strong>
   <%= @album.year %>
 </p>
 
 <p>
-  <strong>format:</strong>
+  <strong>Format:</strong>
   <%= @album.format %>
 </p>
 
 <p>
-  <strong>label:</strong>
+  <strong>Label:</strong>
   <%= @album.label %>
 </p>
 
@@ -28,9 +28,18 @@
   <%= @album.country %>
 </p>
 
+<p>
+  <strong>Release:</strong>
+  <%= @album.release %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @album.details %>
+</p>
+
 <%= render 'collection_form' %>
 
 
-
-<%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Back', albums_path %>
+<span class="btn btn-info"><%= link_to 'Edit', edit_album_path(@album) %></span>
+<span class="btn btn-info"><%= link_to 'Back', albums_path %></span>

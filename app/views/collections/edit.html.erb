@@ -1,16 +1,57 @@
 <h1>Editing Collection</h1>
 
-<%= @collection.id %>
-<%= @collection.album.title %>
-<%= @collection.to_buy %>
-<%= @collection.for_sale %>
-<%= @collection.created_at %>
-<%= @collection.album_id %>
-<%= @collection.buy %>
+<p>
+  <strong>Artist:</strong>
+  <%= @collection.album.artist %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @collection.album.title %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @collection.album.year %>
+</p>
+
+<p>
+  <strong>Format:</strong>
+  <%= @collection.album.format %>
+</p>
+
+<p>
+  <strong>Label:</strong>
+  <%= @collection.album.label %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @collection.album.country %>
+</p>
+
+<p>
+  <strong>Release:</strong>
+  <%= @collection.album.release %>
+</p>
+
+
+<p>
+  <strong>Wishlist:</strong>
+  <%= @collection.buy %>
+</p>
+
+<p>
+  <strong>For Sale:</strong>
+  <%= @collection.sell %>
+</p>
+
 
 <%= form_for @collection do |f| %>
       <div><%= f.hidden_field :id %></div>
+      	<span> Add to wishlist: </span>
   		<div><%= f.check_box :buy %></div>
+  		<span> Add to list 'For Sale': </span>
   		<div><%= f.check_box :sell %></div>
   		<div><%= f.submit 'update' %></div>
   		<% end %>

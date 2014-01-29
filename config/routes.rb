@@ -1,5 +1,7 @@
 Collect::Application.routes.draw do
   
+  get "contact_form/new"
+  get "contact_form/create"
   resources :posts
   resources :sessions, only: [:new, :create, :destroy]
   
@@ -13,6 +15,7 @@ Collect::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :collections
   resources :albums
+  resources :contact_forms
   #get "welcome/index"
 
   root 'welcome#index'

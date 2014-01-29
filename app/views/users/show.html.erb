@@ -6,7 +6,9 @@
     <%= image_tag @user.profile_photo.url(:avatar), :class => "img-polaroid" %>
   </div>
   <div class="span9">
-    <p><%= @user.location %>, <%= @user.name %>, <%= @user.country %>, <%= @user.about %>, <%= @user.age %></p>
+    <h5> <%= @user.name %>, <%= @user.age %> </h5>
+    <h5><%= @user.location %>, <%= @user.country %></h5>
+    <p><%= @user.about %></p>
     <%= render 'shared/stats' %>
     <div>
       <%= render 'follow_form' if signed_in? %>

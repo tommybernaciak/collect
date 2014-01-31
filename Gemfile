@@ -11,15 +11,9 @@ gem "paperclip", "~> 3.0"
 gem "ransack"
 
 
-#group :development do
-#  gem 'sqlite3', '1.3.8'
-#end
-
+#development
 gem 'mysql2'
-
 gem 'sass-rails', '~> 4.0.0'
-
-#Server
 gem 'thin'
 
 gem 'uglifier', '>= 1.3.0'

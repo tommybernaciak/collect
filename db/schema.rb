@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140126192800) do
+ActiveRecord::Schema.define(version: 20140131180143) do
 
   create_table "albums", force: true do |t|
     t.string   "title"
@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(version: 20140126192800) do
   add_index "collections", ["album_id"], name: "index_collections_on_album_id", using: :btree
   add_index "collections", ["user_id", "album_id"], name: "index_collections_on_user_id_and_album_id", unique: true, using: :btree
   add_index "collections", ["user_id"], name: "index_collections_on_user_id", using: :btree
+
+  create_table "contact_forms", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "messages", force: true do |t|
     t.text     "content"

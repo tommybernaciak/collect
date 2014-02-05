@@ -1,5 +1,5 @@
 class Album < ActiveRecord::Base
-	has_many :collections
+	has_many :collections, dependent: :destroy
 	has_many :users, through: :collections
 
 	default_scope -> { order('created_at DESC') }

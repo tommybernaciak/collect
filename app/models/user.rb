@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
  	has_many :followers, through: :reverse_relationships, source: :follower
 
  	has_many 	:collections, class_name: "Collection", dependent: :destroy
- 	has_many	:albums, through: :collections
+ 	has_many	:albums, through: :collections, dependent: :destroy
 
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token

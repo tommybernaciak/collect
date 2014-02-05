@@ -33,6 +33,9 @@
       <th>Country</th>
       <th>Release</th>
       <% if signed_in? %>
+        <% if current_user.admin? %>
+          <th>ID</th>
+        <% end %>
         <th>Settings</th>
       <% end %>
     </tr>
@@ -48,6 +51,9 @@
         <td><%= album.label %></td>
         <td><%= album.country %></td>
         <td><%= album.release %></td>
+        <% if signed_in? and current_user.admin? %>
+          <td><%= album.id %></td>
+        <% end %>
         <% if signed_in? %>
           <td>
             <button class="btn btn-mini btn-block"><%= link_to 'Show', album %></button>
